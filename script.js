@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", sidenVises);
 
+//Laver søgning i URL'en
+let urlPrams = new URLSearchParams(window.location.search);
+//Henter værdien "id" fra URL'en hvis den er tilstede
+let id = urlPrams.get("id");
+console.log(id);
+
+
 function sidenVises() {
     console.log("siden vises");
     document.querySelector(".menubutton").addEventListener("click", trykPaaMenubutton);
@@ -13,6 +20,29 @@ function sidenVises() {
         document.querySelector(".menubutton").classList.toggle("kryds");
 
         //        document.querySelector("body").classList.toggle("overflow");
+
+        if (id == null) {
+            console.log("null virker");
+            document.querySelector(".menupunkt_forside a").classList.add("menu_aktiv");
+        }
+        if (id == 1) {
+            console.log("1 virker");
+            document.querySelector(".menupunkt_forside a").classList.add("menu_aktiv");
+        }
+        if (id == 2) {
+            console.log("2 virker");
+            document.querySelector(".menupunkt_galleri a").classList.add("menu_aktiv");
+        }
+        if (id == 3) {
+            console.log("3 virker");
+            document.querySelector(".menupunkt_kunstneren a").classList.add("menu_aktiv");
+        }
+
+        if (id == 4) {
+            console.log("4 virker");
+            document.querySelector(".menupunkt_kontakt a").classList.add("menu_aktiv");
+        }
+
 
         document.querySelector(".box").classList.toggle("none");
         window.onclick = function (event) {

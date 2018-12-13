@@ -4,12 +4,31 @@
     --pink: #d48ea1;
     --grey: #6b6b6b;
     --martel: 'Martel', serif;
+    --brunsvig: 'galleribrunsvig', sans-serif;
+}
+
+@font-face {
+    font-family: 'galleribrunsvig';
+    src: url('fonte/isocteur-webfont.woff2') format('woff2'),
+        url('fonte/isocteur-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
 body {
     background-color: white;
     margin: 0;
     font-family: 'Martel', serif;
+}
+
+h1 {
+    color: var(--grey);
+}
+
+a {
+    text-decoration: none;
+    color: white;
 }
 
 .main_grid {
@@ -29,6 +48,10 @@ header {
 .index_container {
     grid-row-start: 2;
     grid-row-end: 3;
+    background-image: url(img/me%20and%20my%20associates%20-%20140x%20175.jpg);
+    background-size: 100%;
+    width: 100vw;
+    height: 136vw;
 }
 
 .kunstneren_container {
@@ -40,7 +63,7 @@ header {
 .kontakt_container {
     display: grid;
     grid-template-columns: 5vw 90vw 5vw;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto auto;
 }
 
 footer {
@@ -69,6 +92,10 @@ footer {
 
 .overflow {
     overflow: hidden;
+}
+
+.pink {
+    color: var(--pink);
 }
 
 /*generelt SLUT*/
@@ -155,19 +182,20 @@ nav {
 
 .menu_liste {
     position: fixed;
-    top: 80px;
-    right: 48px;
+    top: 100px;
+    right: 40px;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    font-size: 1.5em;
+    font-size: 1.6em;
     text-align: center;
     font-weight: 600;
+    font-family: var(--brunsvig);
+    line-height: 1.3em;
 }
 
-.menu_liste a {
-    text-decoration: none;
-    color: white;
+.menu_aktiv {
+    color: var(--grey);
 }
 
 /*menu mobil SLUT*/
@@ -181,6 +209,15 @@ nav {
 /* index SLUT*/
 
 /* kunstneren */
+.kunstneren_container h1 {
+    margin: 0;
+    margin-top: 15px;
+}
+
+.kunstneren_container p {
+    margin-top: 5px;
+}
+
 .tekst {
     grid-column-start: 2;
     grid-column-end: 3;
@@ -203,19 +240,101 @@ nav {
     background-image: url(img/mark_2.jpg);
 }
 
+.citat p {
+    margin: 0;
+}
+
 .citat {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 3;
     grid-row-end: 4;
-    text-align: center;
+    /*    text-align: center;*/
     margin-top: 20px;
     margin-bottom: 30px;
     color: var(--pink);
-    font-size: 1.3em;
+    font-size: 1.1em;
+    display: grid;
+    grid-template-columns: 8vw auto 8vw;
+    grid-template-rows: 9vw auto 9vw;
+}
+
+.g1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-size: 3em;
+    font-weight: 900;
+    font-family: var(--brunsvig);
+}
+
+.g2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin: 0;
+}
+
+.g3 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    font-size: 3em;
+    font-weight: 900;
+    font-family: var(--brunsvig);
+}
+
+p.g3 {
+    margin-top: -20px;
 }
 
 /* kunstneren SLUT */
+
+/* kontakt */
+
+.kontakt_billede {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.kontakt_tekst {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.map {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.map iframe {
+    width: 100%;
+    height: 500px;
+    margin-bottom: -9px;
+}
+
+.kontakt_container img {
+    width: 100%;
+}
+
+.kontakt_container h1 {
+    margin: 0;
+}
+
+.kontakt_container p {
+    margin-top: 5px;
+}
+
+/* kontakt SLUT */
 
 /* footer */
 footer img {
@@ -317,4 +436,124 @@ footer a {
     margin-left: 10px;
 }
 
+.kontakt {
+    display: none;
+}
+
 /* footer SLUT */
+
+@media screen and (min-width:500px) and (orientation: landscape) {
+    .index_container {
+        background-image: url(img/120x170%20-%20akryl%20p%C3%A5%20l%C3%A6rred.jpg);
+        background-size: 100%;
+        width: 100vw;
+        height: 76vw;
+    }
+}
+
+@media screen and (min-width:700px) {
+    /*footer*/
+
+    footer {
+        grid-template-columns: 23vw 1px 23vw 1px 42vw 1px auto;
+        grid-template-rows: 20px auto 0px auto 20px auto auto 20px;
+        grid-gap: 0px;
+        justify-items: center;
+    }
+
+    .streg3 {
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        grid-row-start: 2;
+        grid-row-end: 5;
+        grid-column-start: 6;
+        grid-column-end: 7;
+    }
+
+    .telefon,
+    .email {
+        display: none;
+    }
+
+    .kontakt {
+        display: block;
+        grid-row-start: 2;
+        grid-row-end: 5;
+        grid-column-start: 5;
+        grid-column-end: 6;
+    }
+
+    .facebook {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 7;
+        grid-column-end: 8;
+        width: 40%;
+        max-width: 35px;
+        max-height: 35px;
+    }
+
+    .instagram {
+        grid-row-start: 4;
+        grid-row-end: 5;
+        grid-column-start: 7;
+        grid-column-end: 8;
+        justify-self: center;
+        width: 40%;
+        max-width: 35px;
+        max-height: 35px;
+    }
+
+    /*footer SLUT*/
+    /*kunstneren*/
+    .kunstneren_container {
+        grid-template-columns: 7vw 80vw 7vw;
+        grid-template-rows: auto auto auto;
+    }
+
+    /*
+    .kunstneren_container .tekst p {
+        font-size: 1.1em;
+    }
+*/
+
+    .logo {
+        margin-left: 46px;
+        max-width: 400px;
+    }
+
+    .billede {
+        width: 86vw;
+        height: 86vw;
+        grid-column-start: 2;
+        grid-column-end: 3;
+
+    }
+
+    .citat {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        /*    text-align: center;*/
+        margin-top: 365px;
+        margin-bottom: 0px;
+        color: var(--pink);
+        font-size: 1.5em;
+        display: grid;
+        grid-template-columns: 8vw 50vw 8vw;
+        grid-template-rows: 9vw auto 9vw;
+        font-weight: 800;
+    }
+
+    .citat p.g1 {
+        margin-top: 30px;
+        margin-left: 15px;
+    }
+
+    .citat p.g3 {
+        margin-top: -35px;
+    }
+
+}
