@@ -37,8 +37,140 @@
             </div>
         </header>
         <div class="box none"></div>
+
         <div class="galleri_container">
+            <style>
+                img {
+                    width: 100%;
+                }
+
+                .dropdown-container {
+                    display: none;
+                    padding-left: 8px;
+                }
+
+                .active {
+                    display: block;
+                }
+            </style>
+
+            <div class="sidenav filtrering">
+                <div class="menu-item dropdown-btn" data-kategori="Ja">Værker til salg</div>
+                <div class="dropdown-container">
+                    <div class="sub-item" data-kategori="Maleri">Malerier</div>
+                    <div class="sub-item" data-kategori="Tegning">Tegninger</div>
+                    <div class="sub-item" data-kategori="Keramik">Keramik</div>
+                </div>
+
+                <div class="menu-item dropdown-btn" data-kategori="Nej">Tidligere værker</div>
+                <div class="dropdown-container">
+                    <div class="sub-item" data-kategori="Maleri">Malerier</div>
+                    <div class="sub-item" data-kategori="Tegning">Tegninger</div>
+                    <div class="sub-item" data-kategori="Keramik">Keramik</div>
+                </div>
+            </div>
+            <h1>Galleri</h1>
+            <h2></h2>
+            <div class="data-content"></div>
+            <template id="data-template">
+                <div class="galleri_content">
+                    <img class="image" src="" alt="">
+                    <h3></h3>
+                    <p class="data-size"></p>
+                    <p class="data-material"></p>
+                </div>
+            </template>
+
+
+
+            <script>
+                document.addEventListener("DOMContentLoaded", getJSON);
+
+                let kategoriFilter = "alle";
+                let myArt
+                let dest = document.querySelector(".data-content");
+                //                let eventFilter = "alle";
+
+                let dropdown = document.getElementsByClassName("dropdown-btn");
+                let i;
+
+
+                //dropdown filtrerings menu
+
+                for (i = 0; i < dropdown.length; i++) {
+                    dropdown[i].addEventListener("click", function() {
+                        document.querySelectorAll(".dropdown-container").forEach(e => {
+                            e.classList.remove("active");
+                        });
+                        let dropdownContent = this.nextElementSibling;
+                        dropdownContent.classList.add("active");
+                    });
+                }
+
+
+
+                //filter på top niveau
+                document.querySelectorAll(".menu-item").forEach(knap => {
+                    knap.addEventListener("click", filtrering)
+                });
+
+
+                function filtrering() {
+                    dest.textContent = "";
+                    kategoriFilter = this.getAttribute("data-kategori");
+
+                    showArt();
+                }
+
+                ////filter på sub niveau
+                document.querySelectorAll(".sub-item").forEach(knap => {
+                    knap.addEventListener("click", subfiltrering)
+                });
+
+
+                function subfiltrering() {
+                    dest.textContent = "";
+                    kategoriFilter = this.getAttribute("data-kategori");
+
+                    showArt();
+                }
+
+                //Hent wordpress data og konverter til JSON
+
+                async function getJSON() {
+
+                    let myJSON = await fetch("https://www.lowson.dk/kea/2Sem/02_sem_eksamen_GR_17/wordpress//wp-json/wp/v2/vaerker?per_page=100");
+                    myArt = await myJSON.json();
+
+                    showArt();
+                }
+
+                //kør en foreach loop igennem og find defineret data og indsæt i template
+                function showArt() {
+
+                    let myTemplate = document.querySelector("#data-template");
+
+                    myArt.forEach(artwork => {
+
+                        console.log(kategoriFilter);
+
+                        if (artwork.acf.er_vaerket_til_salg == kategoriFilter || kategoriFilter == "alle") {
+                            let klon = myTemplate.cloneNode(true).content;
+                            klon.querySelector("img").src = artwork.acf.billede_af_vaerk;
+                            dest.appendChild(klon);
+                        }
+
+                        if (artwork.acf.kategori == kategoriFilter || kategoriFilter == "alle") {
+                            let klon = myTemplate.cloneNode(true).content;
+                            klon.querySelector("img").src = artwork.acf.billede_af_vaerk;
+                            dest.appendChild(klon);
+                        }
+                    })
+                }
+                //
+            </script>
         </div>
+
         <footer>
             <div class="adresse">
                 <p class="bold">Adresse:</p>
