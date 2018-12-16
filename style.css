@@ -203,13 +203,17 @@ nav {
 }
 
 .index_billede {
-    background-image: url(img/me%20and%20my%20associates%20-%20140x%20175.jpg);
+    background-image: url(img/me_and_my_associates_140x175.jpg);
     background-size: 100%;
     width: 100vw;
     height: 136vw;
 }
 
 .tablet_index {
+    display: none;
+}
+
+.x {
     display: none;
 }
 
@@ -471,15 +475,17 @@ footer a {
 
 /* footer SLUT */
 
-@media screen and (min-width:650px) and (orientation: landscape) {
-    .index_billede {
-        background-image: url(img/120x170%20-%20akryl%20p%C3%A5%20l%C3%A6rred.jpg);
-        background-size: 100%;
-        width: 101vw;
-        height: 76vw;
-        margin-left: -1vw;
+@media screen and (min-width: 420px) {
+    .email {
+        margin-left: 25px;
     }
 
+    .telefon {
+        margin-left: 25px;
+    }
+}
+
+@media screen and (min-width: 500px) {
     .telefon {
         grid-row-start: 6;
         grid-row-end: 7;
@@ -500,6 +506,17 @@ footer a {
         justify-self: center;
     }
 
+}
+
+@media screen and (min-width:650px) and (orientation: landscape) {
+    .index_billede {
+        background-image: url(img/120x170_akryl_paa_laerred.jpg);
+        background-size: 100%;
+        width: 101vw;
+        height: 76vw;
+        margin-left: -1vw;
+    }
+
     .logo {
         margin-top: 45px;
         margin-left: 35px;
@@ -507,9 +524,53 @@ footer a {
         max-width: 380px;
         width: 91%
     }
+
+    .kunstneren_container {
+        display: grid;
+        grid-template-columns: 5vw 90vw 5vw;
+        grid-template-rows: auto auto auto 40px;
+    }
+
+    .billede {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        width: 90vw;
+        height: 90vw;
+    }
+
+    .citat {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        align-self: end;
+        margin: 0;
+        grid-template-rows: 25px auto 25px;
+        font-weight: 900;
+        width: 70%;
+    }
+
+    .kontakt_container {
+        grid-template-columns: 5vw 40vw 50vw 5vw;
+        grid-template-rows: auto 20px auto 30px;
+    }
+
+    .kontakt_billede {
+        grid-column-start: 2;
+        grid-column-end: 4;
+    }
+
+    .map {
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+
+    .map iframe {
+        height: 400px;
+    }
 }
 
-@media screen and (min-width:700px) {
+@media screen and (min-width:768px) {
     /*footer*/
 
     footer {
@@ -567,7 +628,7 @@ footer a {
     /*kunstneren*/
     .kunstneren_container {
         grid-template-columns: 7vw 80vw 7vw;
-        grid-template-rows: auto auto auto;
+        grid-template-rows: auto auto auto 40px;
     }
 
     /*
@@ -739,6 +800,10 @@ footer a {
         width: 190px;
     }
 
+    .c4 {
+        display: none;
+    }
+
     .b5 {
         grid-row-start: 6;
         grid-row-end: 9;
@@ -746,7 +811,7 @@ footer a {
         grid-column-end: 6;
         height: 339px;
         width: 488px;
-        background-color: red;
+        background-color: var(--grey);
     }
 
     .b6 {
@@ -754,6 +819,34 @@ footer a {
         grid-row-end: 9;
         grid-column-start: 7;
         grid-column-end: 11;
+    }
+
+    .kontakt_container {
+        grid-template-columns: 5vw auto 3vw 415px 5vw;
+        grid-template-rows: 277px 20px auto;
+    }
+
+    .map {
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 4;
+        grid-column-end: 5;
+        margin-top: 0;
+    }
+
+    .kontakt_tekst {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    .kontakt_billede {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 4;
+        grid-column-end: 5;
+        width: 100%;
     }
 }
 
@@ -883,4 +976,319 @@ footer a {
     .some_footer_instagram:hover {
         background-image: url(img/instagram_ikon_pink.png);
     }
+
+    .menuklat_burger {
+        display: none;
+    }
+
+    .menubutton {
+        display: none;
+    }
+
+    header {
+        justify-self: center;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 15% auto 15%;
+        grid-template-rows: 100%;
+    }
+
+    .logo_link {
+        justify-self: center;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .logo {
+        max-width: 1300px;
+        margin-left: 0;
+        width: 140%;
+        margin-top: 30px;
+    }
+
+    nav {
+        top: 10px;
+        left: 30px;
+        width: 250px;
+        position: fixed;
+    }
+
+    .menuklat_visning img {
+        width: 80%;
+    }
+
+    .menu_liste {
+        position: fixed;
+        top: 65px;
+        left: -55px;
+        font-size: 1.1em;
+        font-weight: 600;
+        line-height: 1.5em;
+    }
+
+    .some_header {
+        justify-self: center;
+        grid-column-start: 3;
+        grid-column-end: 4;
+        display: flex;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .facebook_header {
+        background-image: url(img/facebook_klat_grey.png);
+        background-size: 100%;
+        width: 40px;
+        height: 40px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    .facebook_header:hover {
+        background-image: url(img/facebook_klat.png);
+    }
+
+    .instagram_header {
+        background-image: url(img/instagram_klat_grey.png);
+        background-size: 100%;
+        width: 40px;
+        height: 40px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    .instagram_header:hover {
+        background-image: url(img/instagram_klat.png);
+    }
+
+    .menu_liste li a:hover {
+        color: var(--grey);
+    }
+
+    .menu_aktiv {
+        color: white;
+        text-decoration: underline;
+    }
+
+    .tablet_index {
+        display: grid;
+        grid-template-columns: 15% 55px 159px 10px 239px 10px 172px 10px 195px 15px auto;
+        grid-template-rows: 22px 23px 98px 40px 10px 85px 10px auto 30px;
+        margin-top: 20px;
+    }
+
+    .b1 {
+        grid-row-start: 2;
+        grid-row-end: 5;
+        grid-column-start: 3;
+        grid-column-end: 4;
+        width: 159px
+    }
+
+    .b2 {
+        grid-row-start: 1;
+        grid-row-end: 5;
+        grid-column-start: 5;
+        grid-column-end: 6;
+        width: 239px;
+    }
+
+    .b3 {
+        grid-row-start: 3;
+        grid-row-end: 7;
+        grid-column-start: 7;
+        grid-column-end: 8;
+        width: 172px;
+    }
+
+    .b4 {
+        display: none;
+    }
+
+    .c4 {
+        display: block;
+        grid-row-start: 4;
+        grid-row-end: 7;
+        grid-column-start: 9;
+        grid-column-end: 10;
+        width: 195px;
+    }
+
+    .b5 {
+        grid-row-start: 6;
+        grid-row-end: 9;
+        grid-column-start: 2;
+        grid-column-end: 6;
+        height: 317px;
+        width: 463px;
+    }
+
+    .b6 {
+        grid-row-start: 8;
+        grid-row-end: 9;
+        grid-column-start: 7;
+        grid-column-end: 11;
+        width: 440px;
+    }
+
+    .kunstneren_container {
+        grid-template-columns: 233px 36vw 3vw 385px auto;
+        grid-template-rows: 310px 50px auto 60px;
+        margin-top: 50px;
+    }
+
+    .billede {
+        width: 385px;
+        height: 385px;
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 4;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    .citat {
+        grid-template-columns: 3vw 31vw 3vw;
+        grid-template-rows: 2vw 120px 2vw;
+        font-weight: 700;
+        font-size: 1.1em;
+    }
+
+    .citat p.g1 {
+        margin-top: -10px;
+        margin-left: -3px;
+    }
+
+    .citat p.g3 {
+        margin-top: -20px;
+        margin-left: -3px;
+    }
+
+    .kontakt_container {
+        grid-template-columns: 233px 36vw 3vw 385px auto;
+        grid-template-rows: 256.5px 20px 330px;
+        margin-top: 50px;
+    }
+
+    .kontakt_billede {
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        width: 100%;
+    }
+
+    .kontakt_tekst {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        margin-top: 0;
+    }
+
+    .kontakt_tekst h1 {
+        margin-top: 15px;
+    }
+
+    .map {
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+
+    .map iframe {
+        width: 100%;
+        height: 280px;
+        margin-bottom: 20px;
+    }
+
+    .x1,
+    .x2,
+    .x3,
+    .x4,
+    .x6 {
+        z-index: 5;
+        transition: 0.3s;
+        color: rgba(255, 255, 255, 0);
+        font-family: var(--brunsvig);
+        text-align: center;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+
+    /*
+    .x1 p,
+    .x2 p {
+        margin-top: 110px;
+    }
+*/
+
+    .x {
+        display: flex;
+        justify-content: center;
+    }
+
+    .x p {
+        align-self: flex-end;
+    }
+
+    .x:hover {
+        background-color: rgba(107, 107, 107, 0.9);
+        color: var(--pink);
+    }
+
+    .x1 {
+        grid-row-start: 2;
+        grid-row-end: 5;
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+
+    .x2 {
+        grid-row-start: 1;
+        grid-row-end: 5;
+        grid-column-start: 5;
+        grid-column-end: 6;
+    }
+
+    .x3 {
+        grid-row-start: 3;
+        grid-row-end: 7;
+        grid-column-start: 7;
+        grid-column-end: 8;
+    }
+
+    .x4 {
+        grid-row-start: 4;
+        grid-row-end: 7;
+        grid-column-start: 9;
+        grid-column-end: 10;
+    }
+
+    .x6 {
+        grid-row-start: 8;
+        grid-row-end: 9;
+        grid-column-start: 7;
+        grid-column-end: 11;
+        width: 440px;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .kunstneren_container {
+        grid-template-columns: 233px 36vw 3vw 385px auto;
+        grid-template-rows: 310px 0px auto 60px;
+        margin-top: 50px;
+    }
+
+    .kontakt_container {
+        grid-template-columns: 233px 470px 50px 350px auto;
+        grid-template-rows: 233px 20px 330px;
+        margin-top: 50px;
+    }
+
 }
