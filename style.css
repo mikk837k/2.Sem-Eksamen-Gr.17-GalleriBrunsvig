@@ -1280,9 +1280,20 @@ footer a {
 
 @media screen and (min-width:1200px) {
     .kunstneren_container {
-        grid-template-columns: 233px 36vw 3vw 385px auto;
+        grid-template-columns: 233px 36vw 3vw 500px auto;
         grid-template-rows: 310px 0px auto 60px;
         margin-top: 50px;
+    }
+
+    .billede {
+        width: 500px;
+        height: 500px;
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 4;
+        margin-top: 20px;
+        margin-bottom: 40px;
     }
 
     .kontakt_container {
