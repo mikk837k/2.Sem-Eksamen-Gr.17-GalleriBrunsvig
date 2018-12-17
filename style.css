@@ -20,6 +20,7 @@ body {
     background-color: white;
     margin: 0;
     font-family: 'Martel', serif;
+    height: 100vh;
 }
 
 h1 {
@@ -31,12 +32,17 @@ a {
     color: white;
 }
 
+.kanIkkeKlikke {
+    pointer-events: none;
+}
+
 .main_grid {
     display: grid;
     grid-template-columns: 100vw;
     grid-template-rows: 145px auto auto;
     grid-gap: 0px;
     /*    overflow: hidden;*/
+    min-height: 100vh;
 }
 
 header {
@@ -72,6 +78,7 @@ footer {
     grid-template-rows: 20px auto 0px auto 20px auto auto 20px;
     grid-gap: 0px;
     justify-items: center;
+    align-self: end;
 }
 
 .logo {
@@ -102,7 +109,7 @@ footer {
     position: fixed;
     top: -6px;
     right: 2px;
-    z-index: 1;
+    z-index: 2;
 }
 
 .menuklat_burger img {
@@ -120,7 +127,7 @@ footer {
     align-items: center;
 
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     right: 27px;
     top: 18px;
     cursor: pointer;
@@ -132,20 +139,24 @@ footer {
     height: 2px;
     transition: transform .5s;
     transform-origin: center right;
+    z-index: 3;
 }
 
 .kryds .bar1 {
     transform: rotate(-39deg);
     transform-origin: center right;
+    z-index: 3;
 }
 
 .kryds .bar2 {
     visibility: hidden;
+    z-index: 3;
 }
 
 .kryds .bar3 {
     transform: rotate(39deg);
     transform-origin: center right;
+    z-index: 3;
 }
 
 .hidden {
@@ -169,7 +180,7 @@ nav {
     position: fixed;
     overflow: hidden;
     /*    transform-origin: top right;*/
-    z-index: 1;
+    z-index: 2;
 }
 
 .menuklat_visning img {
@@ -188,6 +199,11 @@ nav {
     font-weight: 600;
     font-family: var(--brunsvig);
     line-height: 1.3em;
+    z-index: 0;
+}
+
+.menu_liste li a:hover {
+    color: var(--grey);
 }
 
 .menu_aktiv {
@@ -821,6 +837,75 @@ footer a {
         grid-column-end: 11;
     }
 
+
+    /* her er der sat kode ind */
+
+    .x1,
+    .x2,
+    .x3,
+    .x4,
+    .x6 {
+        z-index: 1;
+        transition: 0.3s;
+        color: rgba(255, 255, 255, 0);
+        font-family: var(--brunsvig);
+        text-align: center;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+
+    .x {
+        display: flex;
+        justify-content: center;
+    }
+
+    .x p {
+        align-self: flex-end;
+    }
+
+    .x:hover {
+        background-color: rgba(107, 107, 107, 0.9);
+        color: var(--pink);
+    }
+
+    .x1 {
+        grid-row-start: 3;
+        grid-row-end: 5;
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+
+    .x2 {
+        grid-row-start: 1;
+        grid-row-end: 5;
+        grid-column-start: 5;
+        grid-column-end: 6;
+    }
+
+    .x3 {
+        grid-row-start: 2;
+        grid-row-end: 7;
+        grid-column-start: 7;
+        grid-column-end: 8;
+    }
+
+    .x4 {
+        grid-row-start: 4;
+        grid-row-end: 7;
+        grid-column-start: 9;
+        grid-column-end: 10;
+    }
+
+    .x6 {
+        grid-row-start: 8;
+        grid-row-end: 9;
+        grid-column-start: 7;
+        grid-column-end: 11;
+        100%;
+    }
+
+    /* her er der sat kode ind */
+
     .kontakt_container {
         grid-template-columns: 5vw auto 3vw 415px 5vw;
         grid-template-rows: 277px 20px auto;
@@ -1072,70 +1157,9 @@ footer a {
         text-decoration: underline;
     }
 
-    .tablet_index {
-        display: grid;
-        grid-template-columns: 15% 55px 159px 10px 239px 10px 172px 10px 195px 15px auto;
-        grid-template-rows: 22px 23px 98px 40px 10px 85px 10px auto 30px;
-        margin-top: 20px;
-    }
-
-    .b1 {
-        grid-row-start: 2;
-        grid-row-end: 5;
-        grid-column-start: 3;
-        grid-column-end: 4;
-        width: 159px
-    }
-
-    .b2 {
-        grid-row-start: 1;
-        grid-row-end: 5;
-        grid-column-start: 5;
-        grid-column-end: 6;
-        width: 239px;
-    }
-
-    .b3 {
-        grid-row-start: 3;
-        grid-row-end: 7;
-        grid-column-start: 7;
-        grid-column-end: 8;
-        width: 172px;
-    }
-
-    .b4 {
-        display: none;
-    }
-
-    .c4 {
-        display: block;
-        grid-row-start: 4;
-        grid-row-end: 7;
-        grid-column-start: 9;
-        grid-column-end: 10;
-        width: 195px;
-    }
-
-    .b5 {
-        grid-row-start: 6;
-        grid-row-end: 9;
-        grid-column-start: 2;
-        grid-column-end: 6;
-        height: 317px;
-        width: 463px;
-    }
-
-    .b6 {
-        grid-row-start: 8;
-        grid-row-end: 9;
-        grid-column-start: 7;
-        grid-column-end: 11;
-        width: 440px;
-    }
-
     .kunstneren_container {
         grid-template-columns: 233px 36vw 3vw 385px auto;
-        grid-template-rows: 310px 50px auto 60px;
+        grid-template-rows: 310px 50px 170px 60px;
         margin-top: 50px;
     }
 
@@ -1205,6 +1229,82 @@ footer a {
         height: 280px;
         margin-bottom: 20px;
     }
+}
+
+@media screen and (min-width:1100px) {
+    .tablet_index {
+        display: grid;
+        grid-template-columns: 15% 5vw 14.4vw 1vw 21.7vw 1vw 15.5vw 1vw 17.7vw 5.7vw auto;
+        grid-template-rows: 2.05vw 2.1vw 8.8vw 3.7vw 1vw 7.7vw 1vw 20.2vw 2vw;
+        margin-top: 20px;
+    }
+
+    .b1 {
+        grid-row-start: 2;
+        grid-row-end: 5;
+        grid-column-start: 3;
+        grid-column-end: 4;
+        width: 100%;
+        height: 100%;
+    }
+
+    .b2 {
+        grid-row-start: 1;
+        grid-row-end: 5;
+        grid-column-start: 5;
+        grid-column-end: 6;
+        /*        width: 239px;*/
+        width: 100%;
+        height: 100%;
+    }
+
+    .b3 {
+        grid-row-start: 3;
+        grid-row-end: 7;
+        grid-column-start: 7;
+        grid-column-end: 8;
+        /*        width: 172px;*/
+        width: 100%;
+        height: 100%;
+    }
+
+    .b4 {
+        display: none;
+    }
+
+    .c4 {
+        display: block;
+        grid-row-start: 4;
+        grid-row-end: 7;
+        grid-column-start: 9;
+        grid-column-end: 10;
+        /*        width: 195px;*/
+        width: 100%;
+        height: 100%;
+    }
+
+    .b5 {
+        grid-row-start: 6;
+        grid-row-end: 9;
+        grid-column-start: 2;
+        grid-column-end: 6;
+        /*
+        height: 317px;
+        width: 463px;
+*/
+        width: 100%;
+        height: 100%;
+    }
+
+    .b6 {
+        grid-row-start: 8;
+        grid-row-end: 9;
+        grid-column-start: 7;
+        grid-column-end: 11;
+        /*        width: 440px;*/
+        width: 100%;
+        height: 100%;
+    }
 
     .x1,
     .x2,
@@ -1219,13 +1319,6 @@ footer a {
         font-size: 1.5em;
         cursor: pointer;
     }
-
-    /*
-    .x1 p,
-    .x2 p {
-        margin-top: 110px;
-    }
-*/
 
     .x {
         display: flex;
@@ -1274,14 +1367,15 @@ footer a {
         grid-row-end: 9;
         grid-column-start: 7;
         grid-column-end: 11;
-        width: 440px;
+        100%;
     }
+
 }
 
 @media screen and (min-width:1200px) {
     .kunstneren_container {
         grid-template-columns: 233px 36vw 3vw 500px auto;
-        grid-template-rows: 310px 0px auto 60px;
+        grid-template-rows: 310px 0px 170px 60px;
         margin-top: 50px;
     }
 
