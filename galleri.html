@@ -7,13 +7,50 @@
     <title>Galleri</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Martel:200,300,400,600,700,800,900" rel="stylesheet">
-    <style></style>
+    <style>
+        /*                MODAL visning */
+        #modal {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background-color: rgba(0, 0, 0, 1);
+            opacity: 0;
+            transition: 1s;
+            pointer-events: none;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            grid-template-rows: auto 1fr;
+        }
+
+        #modal-content {
+            margin: 0 10px;
+            grid-column: 2;
+            grid-row: 2;
+            max-width: 490px;
+            height: 70vh;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        #modal.show {
+            opacity: 1;
+            transition: 0.5s;
+            pointer-events: all;
+        }
+
+        #modal img {
+            width: 100%;
+            height: 60vh;
+            object-fit: scale-down;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="box none"></div>
     <div class="main_grid">
         <header>
-            <a href="index.html"><img src="img/logo.svg" alt="billede af Galleri Brunsvigs logo" class="logo"></a>
+            <a href="index.html" class="logo_link"><img src="img/logo.svg" alt="billede af Galleri Brunsvigs logo" class="logo"></a>
             <div class="menu_mobile">
                 <div class="menuklat_burger">
                     <img src="img/menuklat.png" alt="malerklat til burgermenu">
@@ -27,69 +64,22 @@
                     <div class="menuklat_visning">
                         <img src="img/menuklat.png" alt="malerklat til menuvisning"></div>
                     <ul class="menu_liste">
-                        <li> <a href="index.html">FORSIDE</a></li>
-                        <li><a href="galleri.html">GALLERI</a></li>
-                        <li><a href="kunstneren.html">KUNSTNEREN</a>
-                        <li>
-                        <li><a href="kontakt.html">KONTAKT</a></li>
+                        <li class="menupunkt_forside"> <a href="index.html?id=1">FORSIDE</a></li>
+                        <li class="menupunkt_galleri"><a href="galleri.html?id=2">VÆRKER</a></li>
+                        <li class="menupunkt_kunstneren"><a href="kunstneren.html?id=3">KUNSTNEREN</a>
+                        <li class="menupunkt_kontakt">
+                            <a href="kontakt.html?id=4">KONTAKT</a></li>
                     </ul>
                 </nav>
+            </div>
+            <div class="some_header">
+                <div class="facebook_header"></div>
+                <div class="instagram_header"></div>
             </div>
         </header>
         <div class="box none"></div>
 
         <div class="galleri_container">
-            <style>
-                .galleri_container img {
-                    width: 100%;
-                }
-
-                .dropdown-container {
-                    display: none;
-                    padding-left: 8px;
-                }
-
-                .active {
-                    display: block;
-                }
-
-                /*                MODAL visning */
-                #modal {
-                    width: 100vw;
-                    height: 100vh;
-                    position: fixed;
-                    background-color: rgba(0, 0, 0, 1);
-                    opacity: 0;
-                    transition: 1s;
-                    pointer-events: none;
-                    display: grid;
-                    grid-template-columns: 1fr auto 1fr;
-                    grid-template-rows: auto 1fr;
-                }
-
-                #modal-content {
-                    margin: 0 10px;
-                    grid-column: 2;
-                    grid-row: 2;
-                    max-width: 490px;
-                    height: 70vh;
-                    cursor: pointer;
-                    background-color: white;
-                }
-
-                #modal.show {
-                    opacity: 1;
-                    transition: 0.5s;
-                    pointer-events: all;
-                }
-
-                #modal img {
-                    width: 100%;
-                    height: 60vh;
-                    object-fit: scale-down;
-                }
-            </style>
-
             <!--            Hvis vi skal have modal til at fylde det hele skal den ligge længere oppe i html koden -->
             <div id="modal">
                 <div id="modal-content">
@@ -101,29 +91,31 @@
                     <p class="data-pris"></p>
                 </div>
             </div>
+            <h1>Værker</h1>
 
-            <div class="sidenav filtrering">
-                <div class="menu-item dropdown-btn" data-kategori="Ja">Værker til salg</div>
-                <div class="dropdown-container">
-                    <div class="sub-item" data-kategori="Maleri">Malerier</div>
-                    <div class="sub-item" data-kategori="Tegning">Tegninger</div>
-                    <div class="sub-item" data-kategori="Keramik">Keramik</div>
-                </div>
-
-                <div class="menu-item dropdown-btn" data-kategori="Nej">Tidligere værker</div>
-                <div class="dropdown-container">
-                    <div class="sub-item" data-kategori="Maleri">Malerier</div>
-                    <div class="sub-item" data-kategori="Tegning">Tegninger</div>
-                    <div class="sub-item" data-kategori="Keramik">Keramik</div>
-                </div>
+            <div class="menu-item dropdown-btn salg filtrering_aktiv" data-kategori="Ja">
+                <p>TIL SALG</p>
+                <div class="brushstroke"></div>
             </div>
-            <h1>Galleri</h1>
-            <h2></h2>
+            <div class="dropdown-container dropdown_salg">
+                <div class="sub-item" data-kategori="Maleri">Malerier</div>
+                <div class="sub-item" data-kategori="Tegning">Tegninger</div>
+                <div class="sub-item" data-kategori="Keramik">Keramik</div>
+            </div>
+
+            <div class="menu-item dropdown-btn ikke_salg filtrering_ikke_aktiv" data-kategori="Nej">
+                <p>TIDLIGERE</p>
+            </div>
+            <div class="dropdown-container dropdown_ikke_salg">
+                <div class="sub-item" data-kategori="Maleri">Malerier</div>
+                <div class="sub-item" data-kategori="Tegning">Tegninger</div>
+                <div class="sub-item" data-kategori="Keramik">Keramik</div>
+            </div>
             <div class="data-content"></div>
             <template id="data-template">
                 <div class="galleri_content">
                     <img class="image" src="" alt="">
-                    <h3></h3>
+                    <h2></h2>
                     <p class="data-size"></p>
                     <p class="data-material"></p>
                     <p class="data-diametri"></p>
@@ -134,57 +126,100 @@
             <script>
                 document.addEventListener("DOMContentLoaded", getJSON);
 
-                let kategoriFilter = "alle";
+                let kategoriFilter = "Ja";
+                let kategoriFilterSub;
                 let myArt
                 let dest = document.querySelector(".data-content");
                 let modal = document.querySelector("#modal");
                 let dropdown = document.getElementsByClassName("dropdown-btn");
                 let i;
+                let selected;
 
 
                 //dropdown filtrerings menu
 
                 //Løber variablen dropdown igennem og afventer at der klikkes på elementet
-                for (i = 0; i < dropdown.length; i++) {
-                    dropdown[i].addEventListener("click", function() {
-                        //der køres en foreach løkke igennem som nulstiller klassen .dropdown-container og dermed sikre at klassen "active" ikke er tilstede
-                        document.querySelectorAll(".dropdown-container").forEach(e => {
-                            e.classList.remove("active");
-                        });
-                        //variable til søskeende elementet af det aktive element
-                        let dropdownContent = this.nextElementSibling;
-                        //tilføjer klassen "active" til variablen dropdownContent
-                        dropdownContent.classList.add("active");
-                    });
-                }
+                //   for (i = 0; i < dropdown.length; i++) { // dropdown[i].addEventListener("click", function() { // //der køres en foreach løkke igennem som nulstiller klassen .dropdown-container og dermed sikre at klassen "active" ikke er tilstede // document.querySelectorAll(".dropdown-container").forEach(e=> {
+                // e.classList.remove("active");
+                // });
+                // //variable til søskende elementet af det aktive element
+                // let dropdownContent = this.nextElementSibling;
+                // //tilføjer klassen "active" til variablen dropdownContent
+                // dropdownContent.classList.add("active");
+                //
+                // // document.querySelector(".menu-item").addEventListener("click", () => {
+                // // document.querySelector(".dropdown-container").classList.toggle("active");
+                // // })
+                //
+                // });
+                // }
 
+
+                document.querySelector(".salg").addEventListener("click", () => {
+                    document.querySelector(".dropdown_ikke_salg").classList.remove("active");
+                    document.querySelector(".dropdown_ikke_salg").classList.remove("filtrering_aktiv");
+
+                    document.querySelector(".ikke_salg").classList.remove("filtrering_aktiv");
+
+                    document.querySelector(".ikke_salg").classList.remove("pink");
+                    document.querySelector(".dropdown_salg").classList.toggle("active");
+                    document.querySelector(".salg").classList.toggle("pink");
+
+                    document.querySelector(".salg").classList.add("filtrering_aktiv");
+
+                    if (window.innerWidth >= 1050) {
+                        //                        document.querySelector(".ikke_salg").classList.add("position2");
+                        document.querySelector(".ikke_salg").classList.toggle("position2");
+                    }
+
+                });
+
+                document.querySelector(".ikke_salg").addEventListener("click", () => {
+                    document.querySelector(".salg").classList.remove("pink");
+
+                    document.querySelector(".dropdown_salg").classList.remove("active");
+                    document.querySelector(".salg").classList.remove("filtrering_aktiv");
+                    document.querySelector(".dropdown_ikke_salg").classList.toggle("active");
+                    document.querySelector(".ikke_salg").classList.toggle("pink");
+                    document.querySelector(".ikke_salg").classList.add("filtrering_aktiv");
+
+                    if (window.innerWidth >= 1050) {
+                        document.querySelector(".ikke_salg").classList.remove("position2");
+                    }
+                });
 
                 //filter på top niveau
                 document.querySelectorAll(".menu-item").forEach(knap => {
-                    knap.addEventListener("click", filtrering)
+                    knap.addEventListener("click", filtrering);
                 });
 
 
                 function filtrering() {
                     dest.textContent = "";
                     kategoriFilter = this.getAttribute("data-kategori");
-
+                    console.log("kategoriFilter");
                     showArt();
+
+                    //filter på under niveau
+                    document.querySelectorAll(".sub-item").forEach(knap => {
+                        knap.addEventListener("click", subfiltrering);
+                    });
+
+
+                    function subfiltrering() {
+                        document.querySelectorAll(".sub-item").forEach(punkt => {
+                            punkt.classList.remove("pink");
+                        })
+
+                        selected = event.target;
+                        selected.classList.add("pink");
+                        console.log("subfiltrering?");
+                        dest.textContent = "";
+                        kategoriFilterSub = this.getAttribute("data-kategori");
+                        console.log(kategoriFilterSub);
+                        showArtSub();
+                    }
                 }
-
-                //filter på under niveau
-                document.querySelectorAll(".sub-item").forEach(knap => {
-                    knap.addEventListener("click", subfiltrering)
-                });
-
-
-                function subfiltrering() {
-                    dest.textContent = "";
-                    kategoriFilter = this.getAttribute("data-kategori");
-
-                    showArt();
-                }
-
                 //Hent wordpress data og konverter til JSON
 
                 async function getJSON() {
@@ -197,25 +232,61 @@
 
                 //kør en foreach loop igennem og find defineret data og indsæt i template
                 function showArt() {
+                    window.scrollTo(0, 0);
                     let myTemplate = document.querySelector("#data-template");
                     myArt.forEach(artwork => {
-                        console.log(kategoriFilter);
-                        if (artwork.acf.er_vaerket_til_salg == kategoriFilter || kategoriFilter == "alle") {
+
+                        if (artwork.acf.er_vaerket_til_salg == kategoriFilter) {
+                            console.log(kategoriFilter);
                             let klon = myTemplate.cloneNode(true).content;
                             klon.querySelector("img").src = artwork.acf.billede_af_vaerk;
                             klon.querySelector("img").addEventListener("click", () => {
                                 visModal(artwork);
                             });
                             if (artwork.acf.vaerkets_navn != "") {
-                                klon.querySelector("h3").innerHTML = artwork.acf.vaerkets_navn;
+                                klon.querySelector("h2").innerHTML = artwork.acf.vaerkets_navn;
                             } else {
-                                klon.querySelector("h3").innerHTML = '"Unavngivet værk"';
+                                klon.querySelector("h2").innerHTML = '"Unavngivet værk"';
                             }
 
                             if (artwork.acf.bredde != "" || artwork.acf.hojde != "") {
-                                klon.querySelector(".data-size").innerHTML = "Bredde x højde: " + artwork.acf.bredde + " x " + artwork.acf.hojde + " cm"
+                                klon.querySelector(".data-size").innerHTML = artwork.acf.bredde + " x " + artwork.acf.hojde + " cm  " + " -  " + artwork.acf.materiale;
                             }
-                            klon.querySelector(".data-material").innerHTML = artwork.acf.materiale;
+                            //                        klon.querySelector(".data-material").innerHTML = artwork.acf.materiale;
+                            if (artwork.acf.diameter != "") {
+                                klon.querySelector(".data-diametri").innerHTML = "Diameter: " + artwork.acf.diameter + " cm";
+                            }
+                            if (artwork.acf.pris != "") {
+                                klon.querySelector(".data-pris").innerHTML = "Pris: " + artwork.acf.pris + " kr.";
+                            }
+                            dest.appendChild(klon);
+                        }
+                    })
+                }
+
+                function showArtSub() {
+                    window.scrollTo(0, 0);
+                    let myTemplate = document.querySelector("#data-template");
+                    myArt.forEach(artwork => {
+                        console.log(kategoriFilterSub);
+                        if (artwork.acf.er_vaerket_til_salg == kategoriFilter && kategoriFilterSub == artwork.acf.kategori) {
+                            //                       console.log("showArtSub");
+                            // console.log(kategoriFilter);
+                            let klon = myTemplate.cloneNode(true).content;
+                            klon.querySelector("img").src = artwork.acf.billede_af_vaerk;
+                            klon.querySelector("img").addEventListener("click", () => {
+                                visModal(artwork);
+                            });
+                            if (artwork.acf.vaerkets_navn != "") {
+                                klon.querySelector("h2").innerHTML = artwork.acf.vaerkets_navn;
+                            } else {
+                                klon.querySelector("h2").innerHTML = '"Unavngivet værk"';
+                            }
+
+                            if (artwork.acf.bredde != "" || artwork.acf.hojde != "") {
+                                klon.querySelector(".data-size").innerHTML = artwork.acf.bredde + " x " + artwork.acf.hojde + " cm  " + " -  " + artwork.acf.materiale;
+                            }
+                            //                         klon.querySelector(".data-material").innerHTML = artwork.acf.materiale;
                             if (artwork.acf.diameter != "") {
                                 klon.querySelector(".data-diametri").innerHTML = "Diameter: " + artwork.acf.diameter + " cm";
                             }
@@ -255,28 +326,61 @@
             <div class="adresse">
                 <p class="bold">Adresse:</p>
                 <p>Hillerødgade 169</p>
-                <p>2400 Kbh. NV.</p>
+                <p>2400 Kbh. NV</p>
             </div>
+            <div class="adresse2">
+                <p class="bold">Adresse:</p>
+                <p>Hillerødgade 169, 2400 Kbh. NV</p>
+            </div>
+
             <div class="streg1"></div>
             <div class="aabningstider">
                 <p class="bold">Åbningstider:</p>
                 <p>Onsdag 16-18</p>
                 <p>Lørdag 11-14</p>
             </div>
+            <div class="aabningstider2">
+                <p class="bold">Åbningstider:</p>
+                <p>Onsdag 16-18 Lørdag 11-14</p>
+            </div>
             <div class="streg2"></div>
             <div class="facebook">
-                <img src="img/facebook_ikon_hvid.png" alt="billede af Facebook ikon"></div>
-            <div class="instagram"><img src="img/instagram_ikon_hvid.png" alt="billede af Instagram ikon"></div>
+                <a href="https://www.facebook.com/galleribrunsvig/"><img src="img/facebook_ikon_hvid.png" alt="billede af Facebook ikon"></a></div>
+            <div class="instagram"><a href="https://www.instagram.com/galleribrunsvig/?hl=en"><img src="img/instagram_ikon_hvid.png" alt="billede af Instagram ikon"></a></div>
 
+            <div class="some_footer">
+                <a href="https://www.facebook.com/galleribrunsvig/">
+                    <div class="some_footer_facebook"></div>
+                </a>
+                <a href="https://www.instagram.com/galleribrunsvig/?hl=en">
+                    <div class="some_footer_instagram"></div>
+                </a>
+            </div>
+            <div class="streg3"></div>
+            <div class="streg4"></div>
             <div class="telefon">
-                <p><a href="tel:+45 53354422">
-                        <p>Tlf: 53 35 44 22
+                <p>Tlf.: <a href="tel:+45 53354422">
+                        <span class="pink">53 35 44 22</span>
+                    </a></p>
+            </div>
+            <div class="telefon2">
+                <p><span class="bold">Tlf.:</span> <br><a href="tel:+45 53354422">
+                        53 35 44 22
                     </a></p>
             </div>
             <div class="email">
-                <p>E-mail: markbrunsvig@gmail.com</p>
+                <p>E-mail: <a href="mailto:markbrunsvig@gmail.com" target="_top"><span class="pink">markbrunsvig@gmail.com</span></a></p>
             </div>
-
+            <div class="email2">
+                <p><span class="bold">E-mail:</span><br> <a href="mailto:markbrunsvig@gmail.com" target="_top">markbrunsvig@gmail.com</a></p>
+            </div>
+            <div class="kontakt">
+                <p class="bold">Kontakt:</p>
+                <p>Tlf.: <a href="tel:+45 53354422">
+                        <span class="pink">53 35 44 22</span>
+                    </a></p>
+                <p>E-mail: <a href="mailto:markbrunsvig@gmail.com" target="_top"><span class="pink">markbrunsvig@gmail.com</span></a></p>
+            </div>
         </footer>
     </div>
 
