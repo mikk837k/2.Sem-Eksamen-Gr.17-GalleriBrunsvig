@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galleri</title>
+    <title>Værker</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Martel:200,300,400,600,700,800,900" rel="stylesheet">
     <style>
@@ -43,6 +43,7 @@
             height: 60vh;
             object-fit: scale-down;
         }
+
     </style>
 </head>
 
@@ -240,6 +241,7 @@
                             console.log(kategoriFilter);
                             let klon = myTemplate.cloneNode(true).content;
                             klon.querySelector("img").src = artwork.acf.billede_af_vaerk;
+                            klon.querySelector("img").alt = artwork.type + " " + artwork.acf.kategori + " " + artwork.acf.vaerkets_navn;
                             klon.querySelector("img").addEventListener("click", () => {
                                 visModal(artwork);
                             });
@@ -274,6 +276,7 @@
                             // console.log(kategoriFilter);
                             let klon = myTemplate.cloneNode(true).content;
                             klon.querySelector("img").src = artwork.acf.billede_af_vaerk;
+                            klon.querySelector("img").alt = artwork.type + " " + artwork.acf.kategori + " " + artwork.acf.vaerkets_navn;
                             klon.querySelector("img").addEventListener("click", () => {
                                 visModal(artwork);
                             });
@@ -301,6 +304,7 @@
                 function visModal(art) {
                     modal.classList.add("show");
                     modal.querySelector("img").src = art.acf.billede_af_vaerk;
+                    modal.querySelector("img").alt = art.type + " " + art.acf.kategori + " " + art.acf.vaerkets_navn;
                     modal.querySelector("h3").innerHTML = art.acf.vaerkets_navn;
                     if (art.acf.bredde != "" || art.acf.hojde != "") {
                         modal.querySelector(".data-size").innerHTML = "Bredde x højde: " + art.acf.bredde + " x " + art.acf.hojde + " cm";
@@ -319,6 +323,7 @@
                 function hideModal() {
                     modal.classList.remove("show");
                 }
+
             </script>
         </div>
 
