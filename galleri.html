@@ -7,48 +7,13 @@
     <title>Værker</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Martel:200,300,400,600,700,800,900" rel="stylesheet">
-    <style>
-        /*                MODAL visning */
-        #modal {
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            background-color: rgba(0, 0, 0, 1);
-            opacity: 0;
-            transition: 1s;
-            pointer-events: none;
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            grid-template-rows: auto 1fr;
-        }
-
-        #modal-content {
-            margin: 0 10px;
-            grid-column: 2;
-            grid-row: 2;
-            max-width: 490px;
-            height: 70vh;
-            cursor: pointer;
-            background-color: white;
-        }
-
-        #modal.show {
-            opacity: 1;
-            transition: 0.5s;
-            pointer-events: all;
-        }
-
-        #modal img {
-            width: 100%;
-            height: 60vh;
-            object-fit: scale-down;
-        }
-    </style>
 </head>
 
 <body>
     <div class="box none"></div>
+
     <div class="main_grid">
+
         <header>
             <a href="index.html" class="logo_link"><img src="img/logo.svg" alt="billede af Galleri Brunsvigs logo" class="logo"></a>
             <div class="menu_mobile">
@@ -77,20 +42,24 @@
                 <div class="instagram_header"></div>
             </div>
         </header>
-        <div class="box none"></div>
-
-        <div class="galleri_container">
-            <!--            Hvis vi skal have modal til at fylde det hele skal den ligge længere oppe i html koden -->
-            <div id="modal">
-                <div id="modal-content">
-                    <img class="modal-billede" src="" alt="">
-                    <h3></h3>
+        <div id="modal">
+            <div id="modal-content">
+                <div class="modal_knap">
+                    <div class="kryds kryds1">
+                        <div class="kryds kryds2"></div>
+                    </div>
+                </div>
+                <img class="modal-billede" src="" alt="">
+                <div class="modal_tekst">
+                    <h2></h2>
                     <p class="data-size"></p>
-                    <p class="data-material"></p>
+                    <!--                <p class="data-material"></p>-->
                     <p class="data-diametri"></p>
                     <p class="data-pris"></p>
                 </div>
             </div>
+        </div>
+        <div class="galleri_container">
             <h1>Værker</h1>
 
             <div class="menu-item dropdown-btn salg filtrering_aktiv" data-kategori="Ja">
@@ -98,18 +67,18 @@
                 <div class="brushstroke"></div>
             </div>
             <div class="dropdown-container dropdown_salg">
-                <div class="sub-item" data-kategori="Maleri">Malerier</div>
-                <div class="sub-item" data-kategori="Tegning">Tegninger</div>
-                <div class="sub-item" data-kategori="Keramik">Keramik</div>
+                <div class="sub-item b3_link" data-kategori="Maleri">Malerier</div>
+                <div class="sub-item b4_link" data-kategori="Tegning">Tegninger</div>
+                <div class="sub-item b1_link" data-kategori="Keramik">Keramik</div>
             </div>
 
             <div class="menu-item dropdown-btn ikke_salg filtrering_ikke_aktiv" data-kategori="Nej">
                 <p>TIDLIGERE</p>
             </div>
             <div class="dropdown-container dropdown_ikke_salg">
-                <div class="sub-item" data-kategori="Maleri">Malerier</div>
+                <div class="sub-item b2_link" data-kategori="Maleri">Malerier</div>
                 <div class="sub-item" data-kategori="Tegning">Tegninger</div>
-                <div class="sub-item" data-kategori="Keramik">Keramik</div>
+                <!--               <div class="sub-item" data-kategori="Keramik">Keramik</div>-->
             </div>
             <div class="data-content"></div>
             <template id="data-template">
@@ -122,207 +91,6 @@
                     <p class="data-pris"></p>
                 </div>
             </template>
-
-            <script>
-                document.addEventListener("DOMContentLoaded", getJSON);
-
-                let kategoriFilter = "Ja";
-                let kategoriFilterSub;
-                let myArt
-                let dest = document.querySelector(".data-content");
-                let modal = document.querySelector("#modal");
-                let dropdown = document.getElementsByClassName("dropdown-btn");
-                let i;
-                let selected;
-
-
-                //dropdown filtrerings menu
-
-                //Løber variablen dropdown igennem og afventer at der klikkes på elementet
-                //   for (i = 0; i < dropdown.length; i++) { // dropdown[i].addEventListener("click", function() { // //der køres en foreach løkke igennem som nulstiller klassen .dropdown-container og dermed sikre at klassen "active" ikke er tilstede // document.querySelectorAll(".dropdown-container").forEach(e=> {
-                // e.classList.remove("active");
-                // });
-                // //variable til søskende elementet af det aktive element
-                // let dropdownContent = this.nextElementSibling;
-                // //tilføjer klassen "active" til variablen dropdownContent
-                // dropdownContent.classList.add("active");
-                //
-                // // document.querySelector(".menu-item").addEventListener("click", () => {
-                // // document.querySelector(".dropdown-container").classList.toggle("active");
-                // // })
-                //
-                // });
-                // }
-
-
-                document.querySelector(".salg").addEventListener("click", () => {
-                    document.querySelector(".dropdown_ikke_salg").classList.remove("active");
-                    document.querySelector(".dropdown_ikke_salg").classList.remove("filtrering_aktiv");
-
-                    document.querySelector(".ikke_salg").classList.remove("filtrering_aktiv");
-
-                    document.querySelector(".ikke_salg").classList.remove("pink");
-                    document.querySelector(".dropdown_salg").classList.toggle("active");
-                    document.querySelector(".salg").classList.toggle("pink");
-
-                    document.querySelector(".salg").classList.add("filtrering_aktiv");
-
-                    if (window.innerWidth >= 1050) {
-                        //                        document.querySelector(".ikke_salg").classList.add("position2");
-                        document.querySelector(".ikke_salg").classList.toggle("position2");
-                    }
-
-                });
-
-                document.querySelector(".ikke_salg").addEventListener("click", () => {
-                    document.querySelector(".salg").classList.remove("pink");
-
-                    document.querySelector(".dropdown_salg").classList.remove("active");
-                    document.querySelector(".salg").classList.remove("filtrering_aktiv");
-                    document.querySelector(".dropdown_ikke_salg").classList.toggle("active");
-                    document.querySelector(".ikke_salg").classList.toggle("pink");
-                    document.querySelector(".ikke_salg").classList.add("filtrering_aktiv");
-
-                    if (window.innerWidth >= 1050) {
-                        document.querySelector(".ikke_salg").classList.remove("position2");
-                    }
-                });
-
-                //filter på top niveau
-                document.querySelectorAll(".menu-item").forEach(knap => {
-                    knap.addEventListener("click", filtrering);
-                });
-
-
-                function filtrering() {
-                    dest.textContent = "";
-                    kategoriFilter = this.getAttribute("data-kategori");
-                    console.log("kategoriFilter");
-                    showArt();
-
-                    //filter på under niveau
-                    document.querySelectorAll(".sub-item").forEach(knap => {
-                        knap.addEventListener("click", subfiltrering);
-                    });
-
-
-                    function subfiltrering() {
-                        document.querySelectorAll(".sub-item").forEach(punkt => {
-                            punkt.classList.remove("pink");
-                        })
-
-                        selected = event.target;
-                        selected.classList.add("pink");
-                        console.log("subfiltrering?");
-                        dest.textContent = "";
-                        kategoriFilterSub = this.getAttribute("data-kategori");
-                        console.log(kategoriFilterSub);
-                        showArtSub();
-                    }
-                }
-                //Hent wordpress data og konverter til JSON
-
-                async function getJSON() {
-
-                    let myJSON = await fetch("https://www.lowson.dk/kea/2Sem/02_sem_eksamen_GR_17/wordpress//wp-json/wp/v2/vaerker?per_page=100");
-                    myArt = await myJSON.json();
-
-                    showArt();
-                }
-
-                //kør en foreach loop igennem og find defineret data og indsæt i template
-                function showArt() {
-                    window.scrollTo(0, 0);
-                    let myTemplate = document.querySelector("#data-template");
-                    myArt.forEach(artwork => {
-
-                        if (artwork.acf.er_vaerket_til_salg == kategoriFilter) {
-                            console.log(kategoriFilter);
-                            let klon = myTemplate.cloneNode(true).content;
-                            klon.querySelector("img").src = artwork.acf.billede_af_vaerk;
-                            klon.querySelector("img").alt = artwork.type + " " + artwork.acf.kategori + " " + artwork.acf.vaerkets_navn;
-                            klon.querySelector("img").addEventListener("click", () => {
-                                visModal(artwork);
-                            });
-                            if (artwork.acf.vaerkets_navn != "") {
-                                klon.querySelector("h2").innerHTML = artwork.acf.vaerkets_navn;
-                            } else {
-                                klon.querySelector("h2").innerHTML = '"Unavngivet værk"';
-                            }
-
-                            if (artwork.acf.bredde != "" || artwork.acf.hojde != "") {
-                                klon.querySelector(".data-size").innerHTML = artwork.acf.bredde + " x " + artwork.acf.hojde + " cm  " + " -  " + artwork.acf.materiale;
-                            }
-                            //                        klon.querySelector(".data-material").innerHTML = artwork.acf.materiale;
-                            if (artwork.acf.diameter != "") {
-                                klon.querySelector(".data-diametri").innerHTML = "Diameter: " + artwork.acf.diameter + " cm";
-                            }
-                            if (artwork.acf.pris != "") {
-                                klon.querySelector(".data-pris").innerHTML = "Pris: " + artwork.acf.pris + " kr.";
-                            }
-                            dest.appendChild(klon);
-                        }
-                    })
-                }
-
-                function showArtSub() {
-                    window.scrollTo(0, 0);
-                    let myTemplate = document.querySelector("#data-template");
-                    myArt.forEach(artwork => {
-                        console.log(kategoriFilterSub);
-                        if (artwork.acf.er_vaerket_til_salg == kategoriFilter && kategoriFilterSub == artwork.acf.kategori) {
-                            //                       console.log("showArtSub");
-                            // console.log(kategoriFilter);
-                            let klon = myTemplate.cloneNode(true).content;
-                            klon.querySelector("img").src = artwork.acf.billede_af_vaerk;
-                            klon.querySelector("img").alt = artwork.type + " " + artwork.acf.kategori + " " + artwork.acf.vaerkets_navn;
-                            klon.querySelector("img").addEventListener("click", () => {
-                                visModal(artwork);
-                            });
-                            if (artwork.acf.vaerkets_navn != "") {
-                                klon.querySelector("h2").innerHTML = artwork.acf.vaerkets_navn;
-                            } else {
-                                klon.querySelector("h2").innerHTML = '"Unavngivet værk"';
-                            }
-
-                            if (artwork.acf.bredde != "" || artwork.acf.hojde != "") {
-                                klon.querySelector(".data-size").innerHTML = artwork.acf.bredde + " x " + artwork.acf.hojde + " cm  " + " -  " + artwork.acf.materiale;
-                            }
-                            //                         klon.querySelector(".data-material").innerHTML = artwork.acf.materiale;
-                            if (artwork.acf.diameter != "") {
-                                klon.querySelector(".data-diametri").innerHTML = "Diameter: " + artwork.acf.diameter + " cm";
-                            }
-                            if (artwork.acf.pris != "") {
-                                klon.querySelector(".data-pris").innerHTML = "Pris: " + artwork.acf.pris + " kr.";
-                            }
-                            dest.appendChild(klon);
-                        }
-                    })
-                }
-
-                function visModal(art) {
-                    modal.classList.add("show");
-                    modal.querySelector("img").src = art.acf.billede_af_vaerk;
-                    modal.querySelector("img").alt = art.type + " " + art.acf.kategori + " " + art.acf.vaerkets_navn;
-                    modal.querySelector("h3").innerHTML = art.acf.vaerkets_navn;
-                    if (art.acf.bredde != "" || art.acf.hojde != "") {
-                        modal.querySelector(".data-size").innerHTML = "Bredde x højde: " + art.acf.bredde + " x " + art.acf.hojde + " cm";
-                    }
-                    modal.querySelector(".data-material").innerHTML = art.acf.materiale;
-                    if (art.acf.diameter != "") {
-                        modal.querySelector(".data-diametri").innerHTML = "Diameter: " + art.acf.diameter + " cm";
-                    }
-                    if (art.acf.pris != "") {
-                        modal.querySelector(".data-pris").innerHTML = "Pris: " + art.acf.pris + " kr.";
-                    }
-                    modal.querySelector(".data-material").innerHTML = art.acf.materiale;
-                    modal.querySelector("div").addEventListener("click", hideModal);
-                }
-
-                function hideModal() {
-                    modal.classList.remove("show");
-                }
-            </script>
         </div>
 
         <footer>
@@ -389,6 +157,7 @@
 
     <script></script>
     <script src="script.js"></script>
+    <script src="galleri.js"></script>
 </body>
 
 </html>

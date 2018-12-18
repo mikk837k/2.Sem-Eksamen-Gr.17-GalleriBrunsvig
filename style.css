@@ -57,12 +57,16 @@ header {
 }
 
 .galleri_container {
+    grid-row-start: 2;
+    grid-row-end: 3;
     display: grid;
     grid-template-columns: 5vw 45vw 45vw 5vw;
     grid-template-rows: auto auto auto;
 }
 
 .kunstneren_container {
+    grid-row-start: 2;
+    grid-row-end: 3;
     display: grid;
     grid-template-columns: 5vw 90vw 5vw;
     grid-template-rows: auto auto auto;
@@ -105,6 +109,11 @@ footer {
 
 .pink {
     color: var(--pink);
+}
+
+.white {
+    color: white;
+    font-size: 0.7em;
 }
 
 /*generelt SLUT*/
@@ -321,7 +330,6 @@ nav {
 
 .menu-item {
     cursor: pointer;
-    margin-bottom: 10px;
 }
 
 .menu-item:hover {
@@ -359,6 +367,8 @@ nav {
     display: none;
     padding-left: 8px;
     transition: 0.3s;
+    font-family: var(--brunsvig);
+    line-height: 1.5em;
 }
 
 .active {
@@ -666,12 +676,12 @@ footer a {
     }
 
     .data-content h2 {
-        font-size: 1em;
-        margin: 0 10px;
+        font-size: 0.95em;
+        margin: 0 0 0 10px;
     }
 
     .data-content p {
-        margin: 0 10px;
+        margin: 0 0 0 10px;
         font-size: 0.7em;
     }
 
@@ -742,6 +752,118 @@ footer a {
         height: 400px;
     }
 
+}
+
+@media screen and (min-width:700px) {
+
+    /*                MODAL visning */
+    #modal {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        transition: 1s;
+        pointer-events: none;
+        overflow: scroll;
+        z-index: 10;
+        display: flex;
+    }
+
+    #modal-content {
+        margin: auto;
+        background-color: white;
+        display: grid;
+        grid-template-columns: 2vw auto 2vw;
+        grid-template-rows: 2vw auto auto 2vw;
+        overflow: scroll;
+        width: 80%;
+        max-height: 90vh;
+    }
+
+    #modal-content img {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        max-width: 100%;
+        max-height: 75vh;
+    }
+
+    .modal_tekst {
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    #modal.show {
+        opacity: 1;
+        transition: 0.5s;
+        pointer-events: all;
+    }
+
+    #modal img {
+        width: 100%;
+        object-fit: scale-down;
+        margin-bottom: 10px;
+    }
+
+    #modal h2,
+    #modal p {
+        margin-bottom: 0;
+        margin-top: 5px;
+    }
+
+    .modal_knap {
+        width: 40px;
+        height: 40px;
+        background-color: var(--pink);
+        z-index: 15;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 4;
+        justify-self: end;
+        border-radius: 50%;
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .modal_knap:hover {
+        transform: scale(1.2);
+    }
+
+    .kryds {
+        width: 30px;
+        height: 1px;
+        background-color: white;
+        transform-origin: center center;
+    }
+
+    .kryds1 {
+        transform: rotate(45deg);
+    }
+
+    .kryds2 {
+        transform: rotate(-90deg);
+    }
+}
+
+@media screen and (min-width:700px) and (orientation: landscape) {
+    #modal-content img {
+        max-height: 70vh;
+    }
+
+    #modal-content {
+        max-height: 95vh;
+    }
 }
 
 @media screen and (min-width:768px) {
@@ -887,20 +1009,34 @@ footer a {
     .data-content {
         grid-column-start: 1;
         grid-column-end: 6;
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+
+    .galleri_container h1 {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
     }
 
     .ikke_salg {
         grid-column-start: 3;
         grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 3;
     }
 
     .salg {
         grid-column-start: 2;
         grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
     }
 
     .galleri_container {
         grid-template-columns: 5vw 200px 200px auto 5vw;
+        grid-template-rows: auto auto auto auto 10px;
     }
 
     .galleri_container img {
@@ -909,7 +1045,7 @@ footer a {
 
     .data-content h2,
     .data-content p {
-        margin: 0 20px;
+        margin: 0 0 0 20px;
     }
 }
 
@@ -920,7 +1056,7 @@ footer a {
 
     .kunstneren_container {
         grid-template-columns: 5vw 37vw 3vw 50vw 5vw;
-        grid-template-rows: auto 0px auto;
+        grid-template-rows: auto 0px auto 30px;
     }
 
     .kunstneren_container .tekst p {
@@ -1026,11 +1162,10 @@ footer a {
 
     /* her er der sat kode ind */
 
-    .x1,
-    .x2,
-    .x3,
-    .x4,
-    .x6 {
+/*
+    .x {
+        display: flex;
+        justify-content: center;
         z-index: 1;
         transition: 0.3s;
         color: rgba(255, 255, 255, 0);
@@ -1040,18 +1175,33 @@ footer a {
         cursor: pointer;
     }
 
-    .x {
+    .x a {
+        width: 100%;
+        height: 100%;
         display: flex;
         justify-content: center;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        color: var(--pink);
+        visibility: hidden;
     }
 
     .x p {
-        align-self: flex-end;
+        margin-bottom: 8px;
+        margin-top: 0;
+    }
+
+    p.minus_margin {
+        margin-bottom: -55px;
     }
 
     .x:hover {
         background-color: rgba(107, 107, 107, 0.9);
-        color: var(--pink);
+
+    }
+
+    .x:hover a {
+        visibility: visible;
     }
 
     .x1 {
@@ -1089,6 +1239,7 @@ footer a {
         grid-column-end: 11;
         100%;
     }
+*/
 
     /* her er der sat kode ind */
 
@@ -1118,6 +1269,14 @@ footer a {
         grid-column-start: 4;
         grid-column-end: 5;
         width: 100%;
+    }
+
+    #modal-content {
+        width: 75%;
+    }
+
+    #modal-content img {
+        max-height: 65vh;
     }
 }
 
@@ -1345,7 +1504,7 @@ footer a {
 
     .kunstneren_container {
         grid-template-columns: 233px 36vw 3vw 385px auto;
-        grid-template-rows: 310px 50px 170px 60px;
+        grid-template-rows: 310px 10px 190px 3vw;
         margin-top: 50px;
     }
 
@@ -1379,7 +1538,7 @@ footer a {
 
     .kontakt_container {
         grid-template-columns: 233px 36vw 3vw 35vw auto;
-        grid-template-rows: auto auto;
+        grid-template-rows: auto 20px auto 3vw;
         margin-top: 50px;
     }
 
@@ -1389,13 +1548,14 @@ footer a {
         grid-row-start: 1;
         grid-row-end: 2;
         width: 100%;
+        margin-bottom: -10px;
     }
 
     .kontakt_tekst {
         grid-column-start: 2;
         grid-column-end: 3;
         grid-row-start: 1;
-        grid-row-end: 3;
+        grid-row-end: 4;
         margin-top: 0;
     }
 
@@ -1406,9 +1566,10 @@ footer a {
     .map {
         grid-column-start: 4;
         grid-column-end: 5;
-        grid-row-start: 2;
-        grid-row-end: 3;
+        grid-row-start: 3;
+        grid-row-end: 4;
         align-self: end;
+        margin-bottom: -30px;
     }
 
     .map iframe {
@@ -1419,14 +1580,14 @@ footer a {
 
     .galleri_container {
         grid-template-columns: 233px auto auto;
-        grid-template-rows: auto auto;
+        grid-template-rows: auto auto 3vw;
         margin-top: 50px;
     }
 
     .salg {
         position: fixed;
         top: 300px;
-        left: 30px;
+        left: 15px;
     }
 
     .dropdown_salg {
@@ -1434,37 +1595,55 @@ footer a {
         margin-bottom: 15px;
         position: fixed;
         top: 350px;
-        left: 30px;
+        left: 63px;
     }
 
     .ikke_salg {
         position: fixed;
-        left: 30px;
-        top: 360px;
+        left: 15px;
+        top: 350px;
     }
 
     .position2 {
-        top: 430px;
+        top: 420px;
     }
 
     .dropdown_ikke_salg {
         justify-self: start;
         margin-bottom: 15px;
         position: fixed;
-        left: 30px;
-        top: 430px;
+        left: 63px;
+        top: 400px;
     }
 
     .data-content {
         grid-column-start: 2;
         grid-column-end: 3;
-        grid-row-start: 6;
+        grid-row-start: 2;
         grid-row-end: 7;
+    }
+
+    .galleri_container h1 {
+        margin-bottom: 0;
     }
 
     .menu-item {
         width: 200px;
         height: 54px;
+    }
+
+
+    .galleri_container img {
+        margin: 0 20px 0 0;
+    }
+
+    .data-content h2,
+    .data-content p {
+        margin: 0 20px 0 0;
+    }
+
+    #modal-content {
+        width: 58%;
     }
 }
 
@@ -1472,7 +1651,7 @@ footer a {
     .tablet_index {
         display: grid;
         grid-template-columns: 15% 5vw 14.4vw 1vw 21.7vw 1vw 15.5vw 1vw 17.7vw 5.7vw auto;
-        grid-template-rows: 2.05vw 2.1vw 8.8vw 3.7vw 1vw 7.7vw 1vw 20.2vw 2vw;
+        grid-template-rows: 2.05vw 2.1vw 8.8vw 3.7vw 1vw 7.7vw 1vw 20.2vw 3vw;
         margin-top: 20px;
     }
 
@@ -1543,6 +1722,7 @@ footer a {
         height: 100%;
     }
 
+    /*
     .x1,
     .x2,
     .x3,
@@ -1569,6 +1749,51 @@ footer a {
     .x:hover {
         background-color: rgba(107, 107, 107, 0.9);
         color: var(--pink);
+    }
+*/
+
+
+/*
+    .x {
+        display: flex;
+        justify-content: center;
+        z-index: 1;
+        transition: 0.2s;
+        color: rgba(255, 255, 255, 0);
+        font-family: var(--brunsvig);
+        text-align: center;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+
+    .x a {
+        width: 100%;
+        height: 100%;
+        visibility: hidden;
+        transition: 0.1s;
+    }
+
+    .p_wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        color: var(--pink);
+        margin-bottom: 10px;
+    }
+
+    .x p {
+        margin: 0;
+        width: 100%;
+    }
+
+    .x:hover {
+        background-color: rgba(107, 107, 107, 0.9);
+
+    }
+
+    .x:hover a {
+        visibility: visible;
     }
 
     .x1 {
@@ -1606,13 +1831,14 @@ footer a {
         grid-column-end: 11;
         100%;
     }
+*/
 
 }
 
 @media screen and (min-width:1200px) {
     .kunstneren_container {
         grid-template-columns: 233px 36vw 3vw 500px auto;
-        grid-template-rows: 310px 0px 170px 60px;
+        grid-template-rows: 310px 0px 170px auto 3vw;
         margin-top: 50px;
     }
 
@@ -1622,9 +1848,9 @@ footer a {
         grid-column-start: 4;
         grid-column-end: 5;
         grid-row-start: 1;
-        grid-row-end: 4;
+        grid-row-end: 5;
         margin-top: 20px;
-        margin-bottom: 40px;
+        margin-bottom: 0;
     }
 
 }
