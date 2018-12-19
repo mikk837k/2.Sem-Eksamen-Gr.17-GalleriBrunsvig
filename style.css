@@ -82,7 +82,6 @@ footer {
     grid-row-start: 3;
     grid-row-end: 4;
     background-color: var(--grey);
-
     display: grid;
     grid-template-columns: 41% 1px 38% 1px 20%;
     grid-template-rows: 20px auto 0px auto 20px auto auto 20px;
@@ -572,9 +571,15 @@ footer a {
     grid-row-end: 3;
     grid-column-start: 5;
     grid-column-end: 6;
-    width: 40%;
-    max-width: 35px;
-    max-height: 35px;
+    width: 100%;
+    width: 35px;
+    height: 35px;
+    background-image: url(img/facebook_ikon_hvid.png);
+    background-size: 100%;
+}
+
+.facebook:hover {
+    background-image: url(img/facebook_ikon_pink.png);
 }
 
 .instagram {
@@ -583,9 +588,15 @@ footer a {
     grid-column-start: 5;
     grid-column-end: 6;
     justify-self: center;
-    width: 40%;
-    max-width: 35px;
-    max-height: 35px;
+    width: 100%;
+    width: 35px;
+    height: 35px;
+    background-image: url(img/instagram_ikon_hvid.png);
+    background-size: 100%;
+}
+
+.instagram:hover {
+    background-image: url(img/instagram_ikon_pink.png);
 }
 
 .some_footer {
