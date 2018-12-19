@@ -313,7 +313,6 @@ nav {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    /*    justify-content: space-between;*/
 }
 
 .data-content p {
@@ -418,7 +417,6 @@ nav {
     grid-column-end: 3;
     grid-row-start: 3;
     grid-row-end: 4;
-    /*    text-align: center;*/
     margin-top: 20px;
     margin-bottom: 30px;
     color: var(--pink);
@@ -602,16 +600,6 @@ footer a {
 .some_footer {
     display: none;
 }
-
-/*
-.kontaktoplysninger {
-    grid-row-start: 6;
-    grid-row-end: 7;
-    grid-column-start: 1;
-    grid-column-end: 6;
-    display: flex;
-}
-*/
 
 .telefon {
     grid-row-start: 6;
@@ -939,12 +927,6 @@ footer a {
         grid-template-rows: auto auto auto 40px;
     }
 
-    /*
-    .kunstneren_container .tekst p {
-        font-size: 1.1em;
-    }
-*/
-
     .logo {
         margin-left: 46px;
         max-width: 400px;
@@ -1162,6 +1144,7 @@ footer a {
         height: 339px;
         width: 488px;
         background-color: var(--grey);
+        overflow: hidden;
     }
 
     .b6 {
@@ -1170,90 +1153,6 @@ footer a {
         grid-column-start: 7;
         grid-column-end: 11;
     }
-
-
-    /* her er der sat kode ind */
-
-    /*
-    .x {
-        display: flex;
-        justify-content: center;
-        z-index: 1;
-        transition: 0.3s;
-        color: rgba(255, 255, 255, 0);
-        font-family: var(--brunsvig);
-        text-align: center;
-        font-size: 1.5em;
-        cursor: pointer;
-    }
-
-    .x a {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        flex-wrap: wrap;
-        color: var(--pink);
-        visibility: hidden;
-    }
-
-    .x p {
-        margin-bottom: 8px;
-        margin-top: 0;
-    }
-
-    p.minus_margin {
-        margin-bottom: -55px;
-    }
-
-    .x:hover {
-        background-color: rgba(107, 107, 107, 0.9);
-
-    }
-
-    .x:hover a {
-        visibility: visible;
-    }
-
-    .x1 {
-        grid-row-start: 3;
-        grid-row-end: 5;
-        grid-column-start: 3;
-        grid-column-end: 4;
-    }
-
-    .x2 {
-        grid-row-start: 1;
-        grid-row-end: 5;
-        grid-column-start: 5;
-        grid-column-end: 6;
-    }
-
-    .x3 {
-        grid-row-start: 2;
-        grid-row-end: 7;
-        grid-column-start: 7;
-        grid-column-end: 8;
-    }
-
-    .x4 {
-        grid-row-start: 4;
-        grid-row-end: 7;
-        grid-column-start: 9;
-        grid-column-end: 10;
-    }
-
-    .x6 {
-        grid-row-start: 8;
-        grid-row-end: 9;
-        grid-column-start: 7;
-        grid-column-end: 11;
-        100%;
-    }
-*/
-
-    /* her er der sat kode ind */
 
     .kontakt_container {
         grid-template-columns: 5vw auto 3vw 415px 5vw;
@@ -1701,28 +1600,11 @@ footer a {
         width: 100%;
     }
 
-    /*
-
-    .c4 {
-        display: none;
-        grid-row-start: 4;
-        grid-row-end: 7;
-        grid-column-start: 9;
-        grid-column-end: 10;
-        width: 100%;
-        height: 100%;
-    }
-*/
-
     .b5 {
         grid-row-start: 6;
         grid-row-end: 9;
         grid-column-start: 2;
         grid-column-end: 6;
-        /*
-        height: 317px;
-        width: 463px;
-*/
         width: 100%;
         height: 100%;
     }
@@ -1736,118 +1618,6 @@ footer a {
         width: 100%;
         height: 100%;
     }
-
-    /*
-    .x1,
-    .x2,
-    .x3,
-    .x4,
-    .x6 {
-        z-index: 5;
-        transition: 0.3s;
-        color: rgba(255, 255, 255, 0);
-        font-family: var(--brunsvig);
-        text-align: center;
-        font-size: 1.5em;
-        cursor: pointer;
-    }
-
-    .x {
-        display: flex;
-        justify-content: center;
-    }
-
-    .x p {
-        align-self: flex-end;
-    }
-
-    .x:hover {
-        background-color: rgba(107, 107, 107, 0.9);
-        color: var(--pink);
-    }
-*/
-
-
-    /*
-    .x {
-        display: flex;
-        justify-content: center;
-        z-index: 1;
-        transition: 0.2s;
-        color: rgba(255, 255, 255, 0);
-        font-family: var(--brunsvig);
-        text-align: center;
-        font-size: 1.5em;
-        cursor: pointer;
-    }
-
-    .x a {
-        width: 100%;
-        height: 100%;
-        visibility: hidden;
-        transition: 0.1s;
-    }
-
-    .p_wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        flex-wrap: wrap;
-        color: var(--pink);
-        margin-bottom: 10px;
-    }
-
-    .x p {
-        margin: 0;
-        width: 100%;
-    }
-
-    .x:hover {
-        background-color: rgba(107, 107, 107, 0.9);
-
-    }
-
-    .x:hover a {
-        visibility: visible;
-    }
-
-    .x1 {
-        grid-row-start: 2;
-        grid-row-end: 5;
-        grid-column-start: 3;
-        grid-column-end: 4;
-    }
-
-    .x2 {
-        grid-row-start: 1;
-        grid-row-end: 5;
-        grid-column-start: 5;
-        grid-column-end: 6;
-    }
-
-    .x3 {
-        grid-row-start: 3;
-        grid-row-end: 7;
-        grid-column-start: 7;
-        grid-column-end: 8;
-    }
-
-    .x4 {
-        grid-row-start: 4;
-        grid-row-end: 7;
-        grid-column-start: 9;
-        grid-column-end: 10;
-    }
-
-    .x6 {
-        grid-row-start: 8;
-        grid-row-end: 9;
-        grid-column-start: 7;
-        grid-column-end: 11;
-        100%;
-    }
-*/
-
 }
 
 @media screen and (min-width:1200px) {
