@@ -1162,7 +1162,7 @@ footer a {
 
     /* her er der sat kode ind */
 
-/*
+    /*
     .x {
         display: flex;
         justify-content: center;
@@ -1753,7 +1753,7 @@ footer a {
 */
 
 
-/*
+    /*
     .x {
         display: flex;
         justify-content: center;
@@ -1853,12 +1853,4 @@ footer a {
         margin-bottom: 0;
     }
 
-}
-
-@media screen and (min-width:1300px) {
-    .kontakt_container {
-        grid-template-columns: 233px 28vw 3vw 35vw auto;
-        grid-template-rows: auto auto;
-        margin-top: 50px;
-    }
 }
