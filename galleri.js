@@ -183,6 +183,10 @@ function visSide() {
                 }
 
                 if (artwork.acf.bredde != "" || artwork.acf.hojde != "") {
+                    klon.querySelector(".data-size").innerHTML = artwork.acf.bredde + " x " + artwork.acf.hojde + " cm  ";
+                }
+
+                if (artwork.acf.bredde != "" && artwork.acf.materiale != "") {
                     klon.querySelector(".data-size").innerHTML = artwork.acf.bredde + " x " + artwork.acf.hojde + " cm  " + " -  " + artwork.acf.materiale;
                 }
                 //                        klon.querySelector(".data-material").innerHTML = artwork.acf.materiale;
@@ -223,8 +227,13 @@ function visSide() {
                 }
 
                 if (artwork.acf.bredde != "" || artwork.acf.hojde != "") {
+                    klon.querySelector(".data-size").innerHTML = artwork.acf.bredde + " x " + artwork.acf.hojde + " cm  ";
+                }
+
+                if (artwork.acf.bredde != "" && artwork.acf.materiale != "") {
                     klon.querySelector(".data-size").innerHTML = artwork.acf.bredde + " x " + artwork.acf.hojde + " cm  " + " -  " + artwork.acf.materiale;
                 }
+
                 //                         klon.querySelector(".data-material").innerHTML = artwork.acf.materiale;
                 if (artwork.acf.diameter != "") {
                     klon.querySelector(".data-diametri").innerHTML = "Diameter: " + artwork.acf.diameter + " cm";
@@ -290,12 +299,19 @@ function visSide() {
         modal.querySelector("img").alt = art.type + " " + art.acf.kategori + " " + art.acf.vaerkets_navn;
         modal.querySelector("h2").innerHTML = art.acf.vaerkets_navn;
         if (art.acf.bredde != "" || art.acf.hojde != "") {
+            modal.querySelector(".data-size").innerHTML = art.acf.bredde + " x " + art.acf.hojde + " cm";
+        }
+
+        if (art.acf.bredde != "" && art.acf.materiale != "") {
             modal.querySelector(".data-size").innerHTML = art.acf.bredde + " x " + art.acf.hojde + " cm - " + art.acf.materiale;
         }
+
+
         //                    modal.querySelector(".data-material").innerHTML = art.acf.materiale;
         if (art.acf.diameter != "") {
-            modal.querySelector(".data-diametri").innerHTML = "Diameter: " + art.acf.diameter + " cm - " + art.acf.materiale;
+            modal.querySelector(".data-diametri").innerHTML = "Diameter: " + art.acf.diameter + " cm";
         }
+
         if (art.acf.pris != "") {
             modal.querySelector(".data-pris").innerHTML = "Pris: " + art.acf.pris + " kr.";
         }

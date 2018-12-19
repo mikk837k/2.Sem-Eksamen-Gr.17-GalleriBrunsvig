@@ -11,7 +11,7 @@ function sidenVises() {
     console.log("siden vises");
     document.querySelector(".menubutton").addEventListener("click", trykPaaMenubutton);
 
-    if (window.innerWidth >= 1050) {
+    if (window.innerWidth >= 1100) {
         document.querySelector("nav").classList.remove("hidden");
     }
 
