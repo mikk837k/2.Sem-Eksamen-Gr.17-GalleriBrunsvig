@@ -42,7 +42,7 @@
                 <div class="b4">
                     <img src="img/110x140_akryl_paa_laerred.jpg" alt="maleri 110x140 akryl på lærred af Mark Brunsvig"></div>
                 <div class="b5">
-                    <video width="auto" height="100%" autoplay muted loop>
+                    <video autoplay muted loop>
                         <source src="img/kortfilm.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>

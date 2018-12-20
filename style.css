@@ -1,11 +1,11 @@
 /*generelt*/
 
-:root {
-    --pink: #d48ea1;
-    --grey: #6b6b6b;
-    --martel: 'Martel', serif;
-    --brunsvig: 'galleribrunsvig', sans-serif;
-}
+:root --pink: #d48ea1;
+--grey: #6b6b6b;
+--martel: 'Martel',
+serif;
+--brunsvig: 'galleribrunsvig',
+sans-serif;
 
 @font-face {
     font-family: 'galleribrunsvig';
@@ -245,6 +245,11 @@ nav {
 
 .x {
     display: none;
+}
+
+video {
+    width: auto;
+    height: 100%;
 }
 
 /* index SLUT*/

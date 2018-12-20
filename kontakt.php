@@ -23,7 +23,7 @@
             </div>
             <div class="kontakt_tekst">
                 <h1>Kontakt</h1>
-                <p><span class="bold">Tlf.:</span><br> <a href="tel:+45 53354422">
+                <p><span class="bold">Tlf.:</span><br> <a href="tel:+4553354422">
                         <span class="pink">53 35 44 22</span>
                     </a></p>
                 <p><span class="bold">E-mail:</span><br> <a href="mailto:markbrunsvig@gmail.com" target="_top"><span class="pink">markbrunsvig@gmail.com</span></a></p>
