@@ -1,11 +1,11 @@
 /*generelt*/
 
-:root --pink: #d48ea1;
---grey: #6b6b6b;
---martel: 'Martel',
-serif;
---brunsvig: 'galleribrunsvig',
-sans-serif;
+:root {
+    --pink: #d48ea1;
+    --grey: #6b6b6b;
+    --martel: 'Martel', serif;
+    --brunsvig: 'galleribrunsvig', sans-serif;
+}
 
 @font-face {
     font-family: 'galleribrunsvig';
@@ -13,7 +13,6 @@ sans-serif;
         url('fonte/isocteur-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 body {
