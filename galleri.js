@@ -16,6 +16,8 @@ async function getJSON() {
     let myJSON = await fetch("https://www.lowson.dk/kea/2Sem/02_sem_eksamen_GR_17/wordpress//wp-json/wp/v2/vaerker?per_page=100");
     myArt = await myJSON.json();
 
+    console.log(myArt);
+
     visSide();
 }
 
@@ -92,12 +94,12 @@ function visSide() {
         showArtSub();
     }
 
-    //kør en foreach loop igennem og find defineret data og indsæt i template
+    //kør en foreach loop igennem arrayet og find defineret data og indsæt i template
     function showArt() {
         window.scrollTo(0, 0);
         let myTemplate = document.querySelector("#data-template");
         myArt.forEach(artwork => {
-
+            // if statements bruges til at filtrere indholdet ud fra om det er til salg eller ej
             if (artwork.acf.er_vaerket_til_salg == kategoriFilter) {
                 //                console.log(kategoriFilter);
                 let klon = myTemplate.cloneNode(true).content;
@@ -106,25 +108,29 @@ function visSide() {
                 klon.querySelector("img").addEventListener("click", () => {
                     visModal(artwork);
                 });
+                // if og else statement der sørger for at hente værkets navn, og hvis værket ikke har et navn, skriver den "unavngivet værk"
                 if (artwork.acf.vaerkets_navn != "") {
                     klon.querySelector("h2").innerHTML = artwork.acf.vaerkets_navn;
                 } else {
                     klon.querySelector("h2").innerHTML = '"Unavngivet værk"';
                 }
-
+                // hvis værket har en bredde og højde hentes disse
                 if (artwork.acf.bredde != "" || artwork.acf.hojde != "") {
                     klon.querySelector(".data-size").innerHTML = artwork.acf.bredde + " x " + artwork.acf.hojde + " cm  ";
                 }
-
+                // hvis værket har en bredde OG en beskrivelse af materiale hentes disse sammen
                 if (artwork.acf.bredde != "" && artwork.acf.materiale != "") {
                     klon.querySelector(".data-size").innerHTML = artwork.acf.bredde + " x " + artwork.acf.hojde + " cm  " + " -  " + artwork.acf.materiale;
                 }
+                // hvis værket har en diameter hentes denne
                 if (artwork.acf.diameter != "") {
                     klon.querySelector(".data-diametri").innerHTML = "Diameter: " + artwork.acf.diameter + " cm";
                 }
+                // hvis værket har en pris hentes denne
                 if (artwork.acf.pris != "") {
                     klon.querySelector(".data-pris").innerHTML = "Pris: " + artwork.acf.pris + " kr.";
                 }
+                // placerer klonen i den angivede destination i HTML-koden
                 dest.appendChild(klon);
             }
         })
